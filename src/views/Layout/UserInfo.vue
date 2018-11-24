@@ -1,7 +1,7 @@
 <template>
-  <div class="box">
-    {{hello}}
+  <div :class="{'is-loading': isloading}">
     <m-img :href="user.html_url"
+           class="img-center"
            target="_blank"
            :src="user.avatar_url"
            wdClass="is-128x128"
@@ -25,12 +25,13 @@ export default {
   },
   data () {
     return {
-      hello: '这块是用户信息',
+      isloading: true,
       user: {}
     }
   },
   mounted () {
     this.getUserInfo()
+    this.isloading = false
   },
   methods: {
     getUserInfo () {
