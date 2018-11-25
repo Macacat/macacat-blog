@@ -6,10 +6,24 @@
          v-for="blog in blogs"
          :key="blog.id">
       <div class="card-head">{{blog.title}}</div>
-      <mavon-editor v-html="blog.body"
-                    :ishljs='true'
-                    :defaultOpen="defaultData" />
-      <time>{{blog.created_at}}</time>
+      <!-- <mavon-editor v-html="blog.body"
+                    :defaultOpen="defaultData" /> -->
+      <div>
+        <!-- <span class="tag is-primary"
+              v-for="(label, index) in blog.labels"
+              :key="index">
+          <a href="javascript:void(0);">{{label.name}}</a>
+        </span> -->
+        <b-taglist>
+          <time>{{blog.created_at}}</time>
+          <a v-for="label in blog.labels"
+             :key="label.id"
+             href="javascript:void(0)">
+            <b-tag :style="{'backgroundColor': '#' + label.color}"
+                   rounded>{{label.name}} </b-tag>
+          </a>
+        </b-taglist>
+      </div>
     </div>
   </div>
 </template>
@@ -39,3 +53,5 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+</style>

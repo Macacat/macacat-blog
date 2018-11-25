@@ -1,33 +1,38 @@
 <template>
-  <div class="container is-loading">
-    <div class="level"
-         style="background-color:#333; height: 100px;"></div>
-
+  <div>
+    <div class="picture level has-background-primary is-marginless">
+    </div>
     <!-- 这个是内容部分  -->
-    <div class="level">
-      <div class="level-left is-flex"
-           style="width:30%">
-        <user-info />
+    <div class="container">
+      <div class="level nav">
+        <m-nav />
       </div>
-      <div class=" level-right is-paddingless"
-           style="width: 69%;">
-        <blog />
+      <div class="level">
+        <div class="level-left is-flex"
+             style="width:30%">
+          <user-info />
+        </div>
+        <div class=" level-right is-paddingless"
+             style="width: 69%;">
+          <blog />
+        </div>
       </div>
     </div>
-
     <!-- 这个是底部 -->
-    <div class="column"> </div>
+    <div class="level"> </div>
   </div>
 </template>
 
 <script>
 import UserInfo from '@/views/Layout/UserInfo'
-import Blog from '@/views/Blog/Index'
+import Blog from '@/views/Blog/Blog'
+import MNav from '@/views/Layout/MNav'
 export default {
   name: 'Home',
   components: {
     UserInfo,
-    Blog
+    Blog,
+    MNav
   },
   data () {
     return {
@@ -45,5 +50,11 @@ export default {
 <style lang="scss" scoped>
 .box {
   width: 30%;
+}
+.picture {
+  height: 20rem;
+}
+.nav {
+  height: 5rem;
 }
 </style>
