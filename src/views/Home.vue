@@ -4,9 +4,9 @@
     </div>
     <!-- 这个是内容部分  -->
     <div class="container">
-      <div class="level nav">
+      <!-- <div class="level nav">
         <m-nav />
-      </div>
+      </div> -->
       <div class="level">
         <div class="level-left is-flex"
              style="width:30%">
@@ -14,7 +14,8 @@
         </div>
         <div class=" level-right is-paddingless"
              style="width: 69%;">
-          <blog />
+             <router-view/>
+          <!-- <content/> -->
         </div>
       </div>
     </div>
@@ -25,14 +26,12 @@
 
 <script>
 import UserInfo from '@/views/Layout/UserInfo'
-import Blog from '@/views/Blog/Blog'
-import MNav from '@/views/Layout/MNav'
+import Content from '@/views/Layout/Content'
 export default {
   name: 'Home',
   components: {
     UserInfo,
-    Blog,
-    MNav
+    Content
   },
   data () {
     return {

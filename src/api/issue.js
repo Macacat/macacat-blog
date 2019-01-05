@@ -2,11 +2,16 @@ import request from '@/utils/request'
 import store from '@/store'
 
 export default {
+  gitHubUserName: store.state.configuration.gitHubUserName,
+  repository: store.state.configuration.repository,
   getIssues () {
-    let gitHubUserName = store.state.configuration.gitHubUserName
-    let repository = store.state.configuration.repository
     return request({
-      url: '/repos/' + gitHubUserName + '/' + repository + '/issues'
+      url: '/repos/' + this.gitHubUserName + '/' + this.repository + '/issues'
+    })
+  },
+  getSingleIssue (number) {
+    return request({
+      url: '/repos/' + this.gitHubUserName + '/' + this.repository + '/issues' + '/' + number
     })
   }
 }

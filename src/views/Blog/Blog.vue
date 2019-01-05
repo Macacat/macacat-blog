@@ -2,10 +2,12 @@
   <div class="content"
        :class="{'is-loading': isloading}"
        style="width: 100%">
-    <div class="card"
+    <div class="card blog-item"
          v-for="blog in blogs"
          :key="blog.id">
-      <div class="card-head">{{blog.title}}</div>
+      <router-link :to="{path: 'details/' + blog.number}">
+        <div class="card-head">{{blog.title}}</div>
+      </router-link>
       <!-- <mavon-editor v-html="blog.body"
                     :defaultOpen="defaultData" /> -->
       <div>
@@ -16,12 +18,16 @@
         </span> -->
         <b-taglist>
           <time>{{blog.created_at}}</time>
-          <a v-for="label in blog.labels"
-             :key="label.id"
-             href="javascript:void(0)">
-            <b-tag :style="{'backgroundColor': '#' + label.color}"
-                   rounded>{{label.name}} </b-tag>
-          </a>
+            <a class="tag button is-rounded is-outlined"
+              :style="{'color': '#' + label.color, 'border-color': '#'+label.color}"
+              v-for="label in blog.labels"
+              :key="label.id"
+              href="javascript:void(0)">
+              <!-- <b-tag class="is-outlined"
+                    :style="{'color': '#' + label.color}"
+                    rounded>{{label.name}} </b-tag> -->
+              {{label.name}}
+            </a>
         </b-taglist>
       </div>
     </div>
@@ -47,11 +53,18 @@ export default {
     getBlogs () {
       IssueApi.getIssues().then(response => {
         this.blogs = response.data
-        console.log(response)
+        console.log('blogs:', response.data)
       })
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+  .blog-item{
+    margin: 10px 0px;
+    padding: 10px 0px;
+  }
+  .tag {
+    padding: 0.5rem;
+  }
 </style>

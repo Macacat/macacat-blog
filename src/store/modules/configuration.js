@@ -1,6 +1,7 @@
 const configuration = {
   state: {
-    gitHubUserName: 'brickspert',
+    // imjoey/blog   brickspert/blog
+    gitHubUserName: 'imjoey',
     repository: 'blog'
   }
 }
